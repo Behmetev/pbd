@@ -12,18 +12,19 @@ function gen_uuid() {
 }
 
 $data = array(
-    'v' => 1,
-    'tid' => $tid,
-    'cid' => gen_uuid(),
-    't' => 'event'
+    'v' => 1, //Версия протокола
+    'tid' => $tid, //Идентификатор отслеживания/идентификатор веб-ресурса
+    'cid' => gen_uuid(), //Идентификатор клиента
+    't' => 'transaction' //event //Тип обращения
 );
 
-$data['ec'] = "category";
-$data['ea'] = "product";
-$data['el'] = "element";
-$data['ev'] = "34";
+$data['ti'] = '0МВР-011744'; //Идентификатор транзакции
+$data['tr'] = '100.5'; //Доход от транзакции
+//$data['ts'] = '10'; //Стоимость доставки
+//$data['tt'] = '10'; //Налог с транзакции
 
-//$url = https://www.google-analytics.com/collect
+
+//$url = 'https://www.google-analytics.com/collect';
 $url = 'https://www.google-analytics.com/debug/collect';
 $content = http_build_query($data);
 $content = utf8_encode($content);
