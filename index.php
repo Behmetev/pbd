@@ -1,16 +1,13 @@
 <?php
-//phpinfo();
 // Соединение, выбор базы данных
-
 include_once 'dbconn.php';
-
 $dbconn = pg_connect("host=" . $DBHost . " dbname=" . $DBName . " user=" . $DBUser . " password=" . $DBPass)
 or die('Не удалось соединиться: ' . pg_last_error());
 
 // Выполнение SQL-запроса
 $query = "SELECT * FROM sales 
 WHERE checkdate > now() - interval '1 day'
-ORDER BY checkdate DESC";
+ORDER BY id DESC";
 
 $result = pg_query($query) or die('Ошибка запроса: ' . pg_last_error());
 
